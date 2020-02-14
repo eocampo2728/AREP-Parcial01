@@ -15,7 +15,10 @@ Despues de clonar el repositorio correr la clase WebApp y desde cualquier navega
 Esta aplicacion tambien esta desplegada mediante Heroku.
 
 ## Heroku
-Link: [https://arep-parcial01.herokuapp.com/](https://arep-parcial01.herokuapp.com/)
+
+Link heroku: [https://dashboard.heroku.com/apps/arep-parcial01](https://dashboard.heroku.com/apps/arep-parcial01)
+
+Link aplicacion: [https://arep-parcial01.herokuapp.com/](https://arep-parcial01.herokuapp.com/)
 
 ## Autor
 Eduardo Ocampo
