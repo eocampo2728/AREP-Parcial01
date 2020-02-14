@@ -5,10 +5,10 @@ import spark.Response;
 
 import java.util.ArrayList;
 
-import static spark.Spark.get;
-import static spark.Spark.port;
+import static spark.Spark.*;
 
 public class WebApp {
+
     private static ArrayList<Integer> lista = new ArrayList<>();
     private static double mean = 0;
     private static double standardDeviation = 0;
@@ -53,8 +53,7 @@ public class WebApp {
     public static String answer(Request req, Response res) {
         String set1 = req.queryParams("input");
         inputToDouble(set1, lista);
-        mean = Calculator.mean(lista);
-        standardDeviation = Calculator.standardDeviation(lista);
+
 
         String answerHTML = "<!DOCTYPE html>\n" +
                 "<html><head>\n" +
@@ -81,4 +80,4 @@ public class WebApp {
         return answerHTML;
     }
 }
-}
+
