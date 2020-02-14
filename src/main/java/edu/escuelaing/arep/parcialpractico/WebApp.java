@@ -9,9 +9,7 @@ import static spark.Spark.*;
 
 public class WebApp {
 
-    private static ArrayList<Integer> lista = new ArrayList<>();
-    private static double mean = 0;
-    private static double standardDeviation = 0;
+    private static int[] lista ;
 
     public static void main(String[] args) {
         port(getPort());
@@ -30,9 +28,9 @@ public class WebApp {
 
     public static String index(Request req, Response res) {
         String indexHTML = "<!DOCTYPE html>\n" +
-                "<html><head>\n" +
-                "      <title>Calculator</title>\n" +
-                "   </head><body>\n<h2>Calculator for mean and standard deviation</h2>\n" +
+                "<html>ListOperations<head>\n" +
+                "      <title>List Operations</title>\n" +
+                "   </head><body>\n<h2></h2>\n" +
                 "      <p>Web application calculator for mean and standard deviation\n\n</p>\n" +
                 "       <form action=\"/answer\">\n" +
                 "           Enter the numbers:<br>\n" +
@@ -43,16 +41,23 @@ public class WebApp {
         return indexHTML;
     }
 
-    public static void inputToDouble(String set, ArrayList<Integer> list) {
+    public static int[] inputToDouble(String set, int[] list) {
+        ArrayList<Integer> lista2 = new ArrayList<>();
         for (String str : set.split(" ")) {
             int var = Integer.parseInt(str);
-            list.add(var);
+            lista2.add(var);
         }
+        list = new int[lista2.size()];
+        for (int i = 0; i < lista2.size(); i++){
+            list[i] = lista2.get(i);
+        }
+        return list;
     }
 
     public static String answer(Request req, Response res) {
         String set1 = req.queryParams("input");
-        inputToDouble(set1, lista);
+        lista = inputToDouble(set1, lista);
+        ListOperations.mergeSort(lista,lista.length);
 
 
         String answerHTML = "<!DOCTYPE html>\n" +
@@ -67,12 +72,8 @@ public class WebApp {
                 "               <th><b>Answer</b></th> \n" +
                 "           </tr>\n" +
                 "           <tr>\n" +
-                "               <td><b>Mean</b></td>\n" +
-                "               <td>" + mean + "</td> \n" +
-                "           </tr>\n" +
-                "           <tr>\n" +
-                "               <td><b>Standard Deviation</b></td>\n" +
-                "               <td>" + standardDeviation + "</td> \n" +
+                "               <td><b>SortedList</b></td>\n" +
+                "               <td>" + lista + "</td> \n" +
                 "           </tr>\n" +
                 "       </table>" +
                 "   </body></html>";
