@@ -24,7 +24,7 @@ public class ListOperations {
         merge(a, l, r, mid, n - mid);
     }
 
-    public static void merge(
+    private static void merge(
             int[] a, int[] l, int[] r, int left, int right) {
 
         int i = 0, j = 0, k = 0;
@@ -42,5 +42,13 @@ public class ListOperations {
         while (j < right) {
             a[k++] = r[j++];
         }
+    }
+
+    public static int sumatoria(int[] a){
+        int answer = 0;
+        for (int i = 0; i < a.length; i++) {
+            answer += a[i];
+        }
+        return answer;
     }
 }

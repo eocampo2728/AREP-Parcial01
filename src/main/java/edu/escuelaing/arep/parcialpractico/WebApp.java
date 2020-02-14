@@ -11,6 +11,7 @@ import static spark.Spark.*;
 public class WebApp {
 
     private static int[] lista ;
+    private static int suma;
 
     public static void main(String[] args) {
         port(getPort());
@@ -20,7 +21,8 @@ public class WebApp {
             String set1 = req.queryParams("input");
             lista = inputToDouble(set1);
             ListOperations.mergeSort(lista,lista.length);
-            return Arrays.toString(lista);
+            suma = ListOperations.sumatoria(lista);
+            return Arrays.toString(lista)+ " La sumatoria es: "+suma;
         });
 
     }
