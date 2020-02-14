@@ -39,7 +39,7 @@ public class WebApp {
                 "<html>ListOperations<head>\n" +
                 "      <title>List Operations</title>\n" +
                 "   </head><body>\n<h2></h2>\n" +
-                "      <p>This web application will sort the list that you enter\n\n</p>\n" +
+                "      <p>This web application will sort and sum the list that you enter\n\n</p>\n" +
                 "       <form action=\"/answer\">\n" +
                 "           Enter the numbers:<br>\n" +
                 "           <input type=\"text\" placeholder=\"Ex: 1 2 3 4 5\" name=\"input\" ><br>\n" +
@@ -61,5 +61,6 @@ public class WebApp {
         }
         return lista;
     }
+
 }
 
