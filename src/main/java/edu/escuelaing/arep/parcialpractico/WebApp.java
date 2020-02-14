@@ -16,7 +16,12 @@ public class WebApp {
         port(getPort());
 
         get("/", (req, res) -> index(req, res));
-        get("/answer", (req, res) -> answer(req, res));
+        get("/answer", (req, res) ->{
+            String set1 = req.queryParams("input");
+            lista = inputToDouble(set1);
+            ListOperations.mergeSort(lista,lista.length);
+            return Arrays.toString(lista);
+        });
 
     }
 
@@ -53,33 +58,6 @@ public class WebApp {
             lista[i] = lista2.get(i);
         }
         return lista;
-    }
-
-    public static String answer(Request req, Response res) {
-        String set1 = req.queryParams("input");
-        lista = inputToDouble(set1);
-        ListOperations.mergeSort(lista,lista.length);
-
-
-        String answerHTML = "<!DOCTYPE html>\n" +
-                "<html><head>\n" +
-                "      <title>mean and standardD</title>\n" +
-                "   </head><body>\n" +
-                "      <p><b>Calculo de Datos Estadisticos</b></p>\n" +
-                "       <h2>Results</h2>" +
-                "       <table style=\"width:30%\">\n" +
-                "           <tr>\n" +
-                "               <th>Calculation</th>\n" +
-                "               <th><b>Answer</b></th> \n" +
-                "           </tr>\n" +
-                "           <tr>\n" +
-                "               <td><b>SortedList</b></td>\n" +
-                "               <td>" + Arrays.toString(lista) + "</td> \n" +
-                "           </tr>\n" +
-                "       </table>" +
-                "   </body></html>";
-
-        return answerHTML;
     }
 }
 
