@@ -4,6 +4,7 @@ import spark.Request;
 import spark.Response;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import static spark.Spark.*;
 
@@ -31,32 +32,32 @@ public class WebApp {
                 "<html>ListOperations<head>\n" +
                 "      <title>List Operations</title>\n" +
                 "   </head><body>\n<h2></h2>\n" +
-                "      <p>Web application calculator for mean and standard deviation\n\n</p>\n" +
+                "      <p>This web application will sort the list that you enter\n\n</p>\n" +
                 "       <form action=\"/answer\">\n" +
                 "           Enter the numbers:<br>\n" +
                 "           <input type=\"text\" placeholder=\"Ex: 1 2 3 4 5\" name=\"input\" ><br>\n" +
-                "           <input type=\"submit\" value=\"Calculate\">\n" +
+                "           <input type=\"submit\" value=\"sort\">\n" +
                 "       </form>" +
                 "</body></html>";
         return indexHTML;
     }
 
-    public static int[] inputToDouble(String set, int[] list) {
+    public static int[] inputToDouble(String set) {
         ArrayList<Integer> lista2 = new ArrayList<>();
         for (String str : set.split(" ")) {
             int var = Integer.parseInt(str);
             lista2.add(var);
         }
-        list = new int[lista2.size()];
+        lista = new int[lista2.size()];
         for (int i = 0; i < lista2.size(); i++){
-            list[i] = lista2.get(i);
+            lista[i] = lista2.get(i);
         }
-        return list;
+        return lista;
     }
 
     public static String answer(Request req, Response res) {
         String set1 = req.queryParams("input");
-        lista = inputToDouble(set1, lista);
+        lista = inputToDouble(set1);
         ListOperations.mergeSort(lista,lista.length);
 
 
@@ -73,7 +74,7 @@ public class WebApp {
                 "           </tr>\n" +
                 "           <tr>\n" +
                 "               <td><b>SortedList</b></td>\n" +
-                "               <td>" + lista + "</td> \n" +
+                "               <td>" + Arrays.toString(lista) + "</td> \n" +
                 "           </tr>\n" +
                 "       </table>" +
                 "   </body></html>";
